@@ -4,15 +4,12 @@ defmodule GSMLG.Solution do
   """
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> GSMLG.Solution.hello()
-      :world
+  This is a macro that will be called when `use GSMLG.Solution` is used in a module.
 
   """
-  def hello do
-    :world
+  defmacro __using__(_method) do
+    quote do
+      use GenServer
+    end
   end
 end
