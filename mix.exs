@@ -1,28 +1,50 @@
 defmodule GSMLG.Solution.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/gsmlg-dev/ex_solution.git"
+  @version "0.1.0"
+
   def project do
     [
       app: :gsmlg_solution,
-      version: "0.1.0",
-      elixir: "~> 1.17",
+      version: @version,
+      elixir: "~> 1.14.1 or ~> 1.15",
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      description: "The solution for GSMLG",
+      deps: deps(),
+      package: package(),
+      docs: docs(),
+      source_url: @source_url
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+    ]
+  end
+
+  defp docs do
+    [
+      main: "readme",
+      extras: ["README.md"],
+      source_url: @source_url,
+      source_ref: "v#{@version}"
+    ]
+  end
+
+  defp package do
+    [
+      maintainers: ["Jonathan Gao"],
+      licenses: ["MIT"],
+      files: ~w(lib LICENSE mix.exs README.md),
+      links: %{"GitHub" => @source_url}
     ]
   end
 end
